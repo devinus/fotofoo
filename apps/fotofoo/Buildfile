@@ -1,0 +1,4 @@
+config :fotofoo, :required => [
+  :sproutcore,
+  :'scui/foundation'
+]

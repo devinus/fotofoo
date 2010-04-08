@@ -1,0 +1,61 @@
+.sc-split-divider-view {
+  box-shadow: 2px 0 2px #999999;
+  -moz-box-shadow: 2px 0 2px #999999;
+  -webkit-box-shadow: 2px 0 2px #999999;
+}
+
+.sc-source-list .drop-potential {
+  background: #57647f !important;
+}
+
+.workspace {
+  background-color: #dfdfdf !important;
+}
+  .workspace .usage-tip {
+    font-size: 2em;
+    color: #999999;
+  }
+  .workspace .sc-grid-view {
+    background-color: #dfdfdf !important;
+  }
+  .workspace .sc-menu {
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+  }
+  .workspace .thumbnail {
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    box-shadow: 4px 4px 4px #999999;
+    -moz-box-shadow: 4px 4px 4px #999999;
+    -webkit-box-shadow: 4px 4px 4px #999999;
+  }
+  .workspace .selected {
+    border: 5px solid #f5cc40;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+  }
+
+.darkroom {
+  background-color: #111111 !important;
+}
+
+.control-bar {
+  border-top: 1px solid #7a7a7a;
+  background: #dfdfdf !important;
+}
+
+.footer {
+  z-index: 2 !important;
+  box-shadow: 0px -2px 2px #999999;
+  -moz-box-shadow: 0px -2px 2px #999999;
+  -webkit-box-shadow: 0px -2px 2px #999999;
+}
+  .footer .sc-button-label {
+    color: #666666;
+  }

@@ -1,0 +1,11 @@
+[submodule "sproutcore"]
+	path = frameworks/sproutcore
+	url = git://github.com/sproutit/sproutcore.git
+
+[submodule "scui"]
+	path = frameworks/scui
+	url = git://github.com/etgryphon/sproutcore-ui.git
+
+[submodule "node-router"]
+	path = server/deps/node-router
+	url = git://github.com/creationix/node-router.git
