@@ -6,7 +6,7 @@ LRUCache.Cache = function(maxsize) {
   this._expires = {};
   this._size = 0;
   this._maxsize = maxsize || 1024;
-  if (this._maxsize < 2) throw "max size must be > 2";
+  if (this._maxsize < 2) throw Error("max size must be > 2");
 };
 
 LRUCache.Cache.prototype = {

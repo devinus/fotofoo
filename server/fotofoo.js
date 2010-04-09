@@ -5,7 +5,7 @@ var sys = require('sys'),
     multipart = require('./lib/multipart'),
     lrucache = require('./lib/lrucache'),
     magick = require('./lib/magick'),
-    naturalSort = require('./lib/natsort').naturalSort,
+    naturalSort = require('./lib/natsort'),
     router = require('./deps/node-router/lib/node-router');
 
 var ROOT = path.join(__dirname, 'ROOT'),

@@ -3,7 +3,7 @@ var childProcess = require('child_process');
 var Magick = {};
 
 Magick.Image = function (path) {
-  if (!path) throw "Must provide an image path";
+  if (!path) throw Error("Must provide an image path");
   this._path = path;
   this._WHITESPACE_RE = /(\s)/g;
 };
