@@ -130,7 +130,7 @@ server.post(/^(\/.*)$/, function (req, res, match) {
   if (/^application\/json/.test(req.headers['content-type'])) {
     req.setBodyEncoding('utf8');
     req.addListener('data', function (json) {
-      var name = 'untitled folder',
+      var name = "untitled folder",
           nextSlot = -1,
           dirname = path.dirname(guid),
           p = path.join(ROOT, dirname),
@@ -155,7 +155,7 @@ server.post(/^(\/.*)$/, function (req, res, match) {
           }
         }
 
-        if (++nextSlot > 0) name = 'untitled folder ' + nextSlot;
+        if (++nextSlot > 0) name = "untitled folder " + nextSlot;
 
         fs.mkdir(path.join(p, name), 0755, function (err) {
           if (err) throw err;
