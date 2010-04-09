@@ -18,6 +18,8 @@ Fotofoo.FolderView = SC.ListItemView.extend(
   Fotofoo.CommitAfterEditing,
 /** @scope Fotofoo.FolderView.prototype */ {
 
+  validator: Fotofoo.FileNameValidator,
+
   // Implements SC.DropTarget protocol
   isDropTarget: true,
   dragStarted: function(drag, evt) {},
@@ -91,86 +93,6 @@ Fotofoo.FolderView = SC.ListItemView.extend(
   //     dataSource: this.get('content')
   //   });
   //   return sc_super();
-  // },
-
-  beginEditing: function() {
-    if (this.get('isEditing')) return YES ;
-    //if (!this.get('contentIsEditable')) return NO ;
-    return this._beginEditing(YES);
-  },
-  
-  _beginEditing: function(scrollIfNeeded) {
-    var content  = this.get('content'),
-        del      = this.get('displayDelegate'),
-        labelKey = this.getDelegateProperty('contentValueKey', del),
-        parent   = this.get('parentView'),
-        pf       = parent ? parent.get('frame') : null,
-        el       = this.$label(),
-        f, v, offset, oldLineHeight, fontSize, top, lineHeight, 
-        lineHeightShift, targetLineHeight, ret ;
-
-    // if possible, find a nearby scroll view and scroll into view.
-    // HACK: if we scrolled, then wait for a loop and get the item view again
-    // and begin editing.  Right now collection view will regenerate the item
-    // view too often.
-    if (scrollIfNeeded && this.scrollToVisible()) {
-      var collectionView = this.get('owner'), idx = this.get('contentIndex');
-      this.invokeLast(function() {
-        var item = collectionView.itemViewForContentIndex(idx);
-        if (item && item._beginEditing) item._beginEditing(NO);
-      });
-      return YES; // let the scroll happen then begin editing...
-    }
-    
-    // nothing to do...    
-    if (!parent || !el || el.get('length')===0) return NO ;
-    v = (labelKey && content && content.get) ? content.get(labelKey) : null ;
-
-
-    f = this.computeFrameWithParentFrame(null);
-    offset = SC.viewportOffset(el[0]);
-
-    // if the label has a large line height, try to adjust it to something
-    // more reasonable so that it looks right when we show the popup editor.
-    oldLineHeight = el.css('lineHeight');
-    fontSize = el.css('fontSize');
-    top = this.$().css('top');
-
-    if (top) top = parseInt(top.substring(0,top.length-2),0);
-    else top =0;
-
-    lineHeight = oldLineHeight;
-    lineHeightShift = 0;
-
-    if (fontSize && lineHeight) {
-      targetLineHeight = fontSize * 1.5 ;
-      if (targetLineHeight < lineHeight) {
-        el.css({ lineHeight: '1.5' });
-        lineHeightShift = (lineHeight - targetLineHeight) / 2; 
-      } else oldLineHeight = null ;
-    }
-
-    f.x = offset.x;
-    f.y = offset.y+top + lineHeightShift ;
-    f.height = el[0].offsetHeight ;
-    f.width = el[0].offsetWidth ;
-
-    ret = Fotofoo.InlineTextFieldView.beginEditing({
-      frame: f, 
-      exampleElement: el, 
-      delegate: this, 
-      value: v,
-      multiline: NO,
-      isCollection: YES,
-      validator: Fotofoo.FileNameValidator
-    }) ;
-
-    // restore old line height for original item if the old line height 
-    // was saved.
-    if (oldLineHeight) el.css({ lineHeight: oldLineHeight }) ;
-
-    // Done!  If this failed, then set editing back to no.
-    return ret ;
-  }
+  // }
 
 });

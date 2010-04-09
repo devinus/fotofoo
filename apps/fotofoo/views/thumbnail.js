@@ -131,6 +131,7 @@ Fotofoo.ThumbnailView = SC.View.extend(
         slideBack: YES,
         dataSource: this.getPath('parentView*content')
       });
+      this.adjust({ top: 10, left: 10 });
       return sc_super();
     }
   }),
